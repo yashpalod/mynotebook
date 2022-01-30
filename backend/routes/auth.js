@@ -48,7 +48,42 @@ router.post('/createuser', [
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send("Some Error occured");
+        res.status(500).send("Internal Server Error");
+    }
+})
+
+// Authenticate a user using: POST "/api/auth/login"
+router.post('/login', [
+    body('email', 'Enter Valid Email').isEmail(),
+    body('password', 'Password cannot be blanked').exists()
+], async (req, res) => {
+    // if there is any error return bad request and the errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: errors.array() });
+    }
+
+    const { email, password } = req.body;
+    try {
+        let user =await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ error: "Please try to login with correct credentials" });
+        }
+        const passwordCompare = await bcrypt.compare(password, user.password);
+        if (!passwordCompare) {
+            return res.status(400).json({ error: "Please try to login with correct credentials" });
+        }
+        const data = {
+            user: {
+                id: user.id
+            }
+        }
+        const authtoken = jwt.sign(data, JWT_SECRET);
+        res.json(authtoken);
+        
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
     }
 })
 
