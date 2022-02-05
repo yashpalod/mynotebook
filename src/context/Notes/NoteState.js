@@ -20,6 +20,33 @@ const NoteState = (props) => {
             "tag": "personal",
             "date": "2022-02-02T08:49:44.560Z",
             "__v": 0
+        },
+        {
+            "_id": "61fa45a8d806991fa09b2cae",
+            "user": "61fa448dd806991fa09b2ca2",
+            "title": "First Note",
+            "description": "Hello Yash Palod",
+            "tag": "personal",
+            "date": "2022-02-02T08:49:44.560Z",
+            "__v": 0
+        },
+        {
+            "_id": "61fa45a8d806991fa09b2cae",
+            "user": "61fa448dd806991fa09b2ca2",
+            "title": "First Note",
+            "description": "Hello Yash Palod",
+            "tag": "personal",
+            "date": "2022-02-02T08:49:44.560Z",
+            "__v": 0
+        },
+        {
+            "_id": "61fa45a8d806991fa09b2cae",
+            "user": "61fa448dd806991fa09b2ca2",
+            "title": "First Nce",
+            "description": "Hecdso Yash Palod",
+            "tag": "personal",
+            "date": "2022-02-02T08:49:44.560Z",
+            "__v": 0
         }
     ]
 
